@@ -553,3 +553,23 @@ They are deeply, transitively immutable. If you have a final field containing a 
 They are canonicalized. This is sort of like string interning: for any given const value, a single const object will be created and re-used no matter how many times the const expression(s) are evaluated.
 
 https://news.dartlang.org/2012/06/const-static-final-oh-my.html
+
+---
+
+65.Explain in depth the concept of Isolates in Flutter?
+
+Dart uses Isolate model for concurrency. Isolate is nothing but a wrapper around thread. But threads, by definition, can share memory which might be easy for the developer but makes code prone to race conditions and locks. Isolates on the other hand cannot share memory and instead rely on message passing mechanism to talk with each other.
+
+Using isolates, Dart code can perform multiple independent tasks at once, using additional cores if they’re available. Each Isolate has its own memory and a single thread running an event loop.
+
+---
+
+65.What is event loop in Flutter?
+
+Isolate is a wrapper around thread and each Isolate has an event loop executing events. These events are nothing but what happens when we use the application. These events are added in a queue which then the Event loop takes in and processes. These events are processed in the first-in-first-out fashion.
+
+<img src='https://miro.medium.com/v2/resize:fit:828/format:webp/1*X9m9zKnElXQNgs5ETbqgdA.png' alt="image1"/>
+<img src='https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ZUN18Fxp9anLVIq2xjtoUw.png' alt="image2"/>
+
+
+---
